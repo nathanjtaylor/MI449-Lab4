@@ -1,50 +1,181 @@
+@-webkit-keyframes slide-fwd-tr {
+    0% {
+        -webkit-transform: translateZ(0) translateY(0) translateX(0);
+        transform: translateZ(0) translateY(0) translateX(0);
+    }
+    100% {
+        -webkit-transform: translateZ(12px) translateY(-12px) translateX(12px);
+        transform: translateZ(12px) translateY(-12px) translateX(12px);
+    }
+}
+
+@keyframes slide-fwd-tr {
+    0% {
+        -webkit-transform: translateZ(0) translateY(0) translateX(0);
+        transform: translateZ(0) translateY(0) translateX(0);
+    }
+    100% {
+        -webkit-transform: translateZ(12px) translateY(-12px) translateX(12px);
+        transform: translateZ(12px) translateY(-12px) translateX(12px);
+    }
+}
+
+@-webkit-keyframes shadow-drop-bl {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        box-shadow: -16px 16px 10px 0px rgba(0,0,0,0.5);
+        -webkit-box-shadow: -16px 16px 10px 0px rgba(0,0,0,0.5);
+    }
+}
+
+@keyframes shadow-drop-bl {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        box-shadow: -16px 16px 10px 0px rgba(0,0,0,0.5);
+        -webkit-box-shadow: -16px 16px 10px 0px rgba(0,0,0,0.5);
+    }
+
+    
+}:root {
+    --Mercury: 60;
+    --Venus: 80;
+    --Earth: 80;
+    --Mars: 70;
+    --Jupiter: 160;
+    --Saturn: 150;
+    --Uranus: 150;
+    --Neptune: 130;
+
+    --fontColor: #EAE8FF;
+}
+
 body {
-    font-family: Helvetica, sans-serif;
-    color: #EAE8FF;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--fontColor);
     background: #2D3142;
-    padding: 0 40px;
-    text-align: center;
-}
-
-nav {
-    margin: 40px auto 0 auto;
-    width: 250px;
-    border-radius: 50px;
-    background: #212431;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    list-style-type: none;
-    margin: 0;
-}
-
-nav ul li a {
-    display: inline-block;
-    padding: 20px;
-    color: #EAE8FF;
-    text-decoration: none;
-    font-size: 1.2em;
+    padding: 20px 40px;
 }
 
 h1 {
-    font-size: 8em;
-    letter-spacing: -2px;
+    font-size: 4em;
+    color: var(--fontColor);
 }
 
-h1 strong {
-    background: rgb(34,193,195);
-    background: linear-gradient(45deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+main {
+    display: grid;
+    grid-template-columns: repeat(6, 250px);
+    grid-auto-rows: 350px;
+    gap: 25px;
+    place-content: left;
 }
 
-img.about {
-    opacity: 0.5;
+.card {
+    background-color: #000005;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    line-height: 40px;
+    font-size: 24px;
+    box-shadow: -4px 4px 10px 0px rgba(0,0,0,0.5);
+}
+
+.card:hover{
+    -webkit-animation: slide-fwd-tr 0.1s ease-in-out forwards, shadow-drop-bl 0.1s ease-in-out forwards;
+    animation: slide-fwd-tr 0.1s ease-in-out forwards, shadow-drop-bl 0.1s ease-in-out forwards;
+}
+
+.card strong{
+    font-size: 36px;
+}
+
+.card.Sun {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    font-size: 36px;
+    line-height: 60px;
+}
+
+.card.Sun strong{
+    font-size: 52px;
+    margin-top: 30px;
+}
+
+.icon {
+    border-radius: 50%;
+}
+
+
+/*Planet Icon Styles*/
+
+.icon.Sun{
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(50% 50% at 50% 50%, #DEA703 0%, #FFE101 100%);
+}
+
+.icon.Mercury{
+    width: calc(var(--Mercury) * 1px);
+    height: calc(var(--Mercury) * 1px);
+    background: linear-gradient(45deg, #AA8E80 16.67%, #443933 83.33%);
+    margin-bottom: calc(175px - (var(--Mercury) * 1px));
+}
+
+.icon.Venus{
+    width: calc(var(--Venus) * 1px);
+    height: calc(var(--Venus) * 1px);
+    background: linear-gradient(239.62deg, #77734C 14.26%, #C5BE7F 86.51%);
+    margin-bottom: calc(175px - (var(--Venus) * 1px));
+
+}
+
+.icon.Earth{
+    width: calc(var(--Earth) * 1px);
+    height: calc(var(--Earth) * 1px);
+    background: linear-gradient(86.01deg, #018F2E 28.15%, #010E83 91.07%);
+    transform: rotate(45deg);
+    margin-bottom: calc(175px - (var(--Earth) * 1px));
+}
+
+.icon.Mars{
+    width: calc(var(--Mars) * 1px);
+    height: calc(var(--Mars) * 1px);
+    background: linear-gradient(72.26deg, #C35230 14.07%, #5D2717 88.64%);
+    margin-bottom: calc(175px - (var(--Mars) * 1px));
+
+}
+
+.icon.Jupiter{
+    width: calc(var(--Jupiter) * 1px);
+    height: calc(var(--Jupiter) * 1px);
+    background: linear-gradient(143.13deg, #DAC592 16.52%, #9E8F5F 83.48%);
+    margin-bottom: calc(175px - (var(--Jupiter) * 1px));
+}
+
+.icon.Saturn{
+    width: calc(var(--Saturn) * 1px);
+    height: calc(var(--Saturn) * 1px);
+    background: linear-gradient(143.13deg, #DDD7AE 16.52%, #B8AD8B 83.48%);
+    margin-bottom: calc(175px - (var(--Saturn) * 1px));
+}
+
+.icon.Uranus{
+    width: calc(var(--Uranus) * 1px);
+    height: calc(var(--Uranus) * 1px);
+    background: linear-gradient(143.13deg, #C7F0F8 16.52%, #A6C3C8 83.48%);
+    margin-bottom: calc(175px - (var(--Uranus) * 1px));
+}
+
+.icon.Neptune{
+    width: calc(var(--Neptune) * 1px);
+    height: calc(var(--Neptune) * 1px);
+    background: linear-gradient(143.13deg, #325BBA 16.52%, #203972 83.48%);
+    margin-bottom: calc(175px - (var(--Neptune) * 1px));
 }

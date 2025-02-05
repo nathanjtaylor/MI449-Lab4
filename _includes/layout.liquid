@@ -1,5 +1,5 @@
 ---
-title: 11ty Boilerplate
+title: Planetary Playing Cards
 ---
 
 <!DOCTYPE html>
@@ -9,14 +9,22 @@ title: 11ty Boilerplate
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
   <link rel="stylesheet" href="/styles/screen.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="/" title="Go home">Home</a></li>
-      <li><a href="/about/" title="About the boilerplate">About</a></li>
-    </ul>
-  </nav>
     {{ content }}
+
+    <script>
+		  ScrollReveal().reveal('h1');
+      ScrollReveal().reveal('.card.Sun', { delay: 400 });
+      ScrollReveal().reveal('.card.Mercury', { delay: 600 });
+      ScrollReveal().reveal('.card.Venus', { delay: 800 });
+      ScrollReveal().reveal('.card.Earth', { delay: 1000 });
+      ScrollReveal().reveal('.card.Mars', { delay: 1200 });
+      ScrollReveal().reveal('.card.Jupiter', { delay: 1400 });
+      ScrollReveal().reveal('.card.Saturn', { delay: 1600 });
+      ScrollReveal().reveal('.card.Uranus', { delay: 1800 });
+      ScrollReveal().reveal('.card.Neptune', { delay: 2000 });
+	  </script>
 </body>
 </html>
